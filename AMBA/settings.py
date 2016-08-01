@@ -27,10 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'user_registration.Profile'
+ACCOUNT_ACTIVATION_DAYS = 7
 
 # Application definition
 
 INSTALLED_APPS = [
+    'user_registration',
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -106,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
