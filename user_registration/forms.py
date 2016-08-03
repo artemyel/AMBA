@@ -1,5 +1,4 @@
 from registration.forms import RegistrationForm
-
 from user_registration.models import Profile
 
 
@@ -12,7 +11,7 @@ class MyCustomUserForm(RegistrationForm):
             'password1',
             'password2',
             'city',
-            'username',
+            'MyUsername',
             'phone',
             'first_name',
             'last_name',
@@ -20,4 +19,6 @@ class MyCustomUserForm(RegistrationForm):
             'gender',
             'birth_date',
             'info',
+            'avatar',
         ]
+

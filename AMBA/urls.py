@@ -15,8 +15,17 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from registration.backends.hmac.views import RegistrationView
+from user_registration.forms import MyCustomUserForm
 
 urlpatterns = [
+    url(r'^accounts/register/$',
+        RegistrationView.as_view(
+            form_class=MyCustomUserForm
+        ),
+        name='registration_register',
+        ),
+    url(r'^accounts/', include('registration.backends.hmac.urls')),
     url(r'^main/', include('main.urls')),
     url(r'^admin/', admin.site.urls),
 ]
