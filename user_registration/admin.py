@@ -7,6 +7,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from .models import Profile
 
+
 class UserCreationForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
@@ -16,14 +17,15 @@ class UserCreationForm(forms.ModelForm):
         fields = (
             'email',
             'city',
-            'username',
+            'MyUsername',
             'phone',
             'first_name',
             'last_name',
             'address',
             'gender',
             'birth_date',
-            'info'
+            'info',
+            'avatar'
         )
 
     def clean_password2(self):
@@ -55,7 +57,7 @@ class UserChangeForm(forms.ModelForm):
             'email',
             'password',
             'city',
-            'username',
+            'MyUsername',
             'phone',
             'first_name',
             'last_name',
@@ -64,7 +66,8 @@ class UserChangeForm(forms.ModelForm):
             'birth_date',
             'info',
             'is_active',
-            'is_admin'
+            'is_admin',
+            'avatar'
         )
 
     def clean_password(self):
@@ -84,7 +87,7 @@ class UserAdmin(BaseUserAdmin):
     list_display = (
         'email',
         'city',
-        'username',
+        'MyUsername',
         'phone',
         'first_name',
         'last_name',
@@ -92,6 +95,7 @@ class UserAdmin(BaseUserAdmin):
         'gender',
         'birth_date',
         'info',
+        'avatar',
         'is_active',
         'is_admin',
     )
@@ -100,7 +104,7 @@ class UserAdmin(BaseUserAdmin):
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': (
             'city',
-            'username',
+            'MyUsername',
             'phone',
             'first_name',
             'last_name',
@@ -108,6 +112,7 @@ class UserAdmin(BaseUserAdmin):
             'gender',
             'birth_date',
             'info',
+            'avatar',
             'is_active',
         )}),
         ('Permissions', {'fields': ('is_admin',)}),
@@ -122,7 +127,7 @@ class UserAdmin(BaseUserAdmin):
                 'city',
                 'password1',
                 'password2',
-                'username',
+                'MyUsername',
                 'phone',
                 'first_name',
                 'last_name',
@@ -130,6 +135,7 @@ class UserAdmin(BaseUserAdmin):
                 'gender',
                 'birth_date',
                 'info',
+                'avatar',
                 'is_active',
             )}
         ),

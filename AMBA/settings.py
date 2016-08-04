@@ -33,6 +33,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'user_registration',
     'main.apps.MainConfig',
     'django.contrib.admin',

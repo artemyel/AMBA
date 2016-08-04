@@ -5,7 +5,7 @@ from django.contrib.auth.models import (
 
 
 class ProfileManager(BaseUserManager):
-    def create_user(self, email, city, username, phone, first_name, last_name, address, gender, birth_date, info, password=None):
+    def create_user(self, email, city, MyUsername, phone, first_name, last_name, address, gender, birth_date, info, avatar, password=None):
         if not email:
             raise ValueError('Users must have an email address')
 
@@ -13,32 +13,34 @@ class ProfileManager(BaseUserManager):
             email=self.normalize_email(email),
             password=password,
             city=city,
-            username=username,
+            MyUsername=MyUsername,
             phone=phone,
             first_name=first_name,
             last_name=last_name,
             address=address,
             gender=gender,
             birth_date=birth_date,
-            info=info
+            info=info,
+            avatar=avatar
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, city, username, phone, first_name, last_name, address, gender, birth_date, info, password=None):
+    def create_superuser(self, email, city, MyUsername, phone, first_name, last_name, address, gender, birth_date, info, avatar, password=None):
         user = self.create_user(
             email=self.normalize_email(email),
             password=password,
             city=city,
-            username=username,
+            MyUsername=MyUsername,
             phone=phone,
             first_name=first_name,
             last_name=last_name,
             address=address,
             gender=gender,
             birth_date=birth_date,
-            info=info
+            info=info,
+            avatar=avatar
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -54,7 +56,7 @@ class Profile(AbstractBaseUser):
     city = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    username = models.CharField(max_length=255, unique=True)
+    MyUsername = models.CharField(max_length=255, unique=True)
     phone = models.CharField(max_length=20, null=False)
     first_name = models.CharField(max_length=255, null=False)
     last_name = models.CharField(max_length=255, null=False)
@@ -62,20 +64,13 @@ class Profile(AbstractBaseUser):
     gender = models.BooleanField(null=False)
     birth_date = models.DateField(null=False)
     info = models.TextField(null=True)
+    avatar = models.ImageField(upload_to='avatars/', null=True)
 
     object = ProfileManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [
-        'city',
-        'username',
-        'phone',
-        'first_name',
-        'last_name',
-        'address',
-        'gender',
-        'birth_date',
-        'info',
+        'MyUsername'
     ]
 
     def get_full_name(self):
