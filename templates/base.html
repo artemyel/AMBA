@@ -11,7 +11,7 @@
   </head>
   <body>
 
-          {% if user.is_authenticated   %}
+          {% if user.is_authenticated %}
             <div class="header">
               <div class="row">
                   <div class="col-xs-4">Санкт-Петербург</div>
@@ -19,6 +19,10 @@
                   <div class="col-xs-4 user" align="right">
                       {{ user.MyUsername }}
                       <img src="{{ user.avatar.url }}" class="img-rounded">
+                      <form action="/main/logout/" method="POST">
+                          {% csrf_token %}
+                          <input type="submit" value="LogOut">
+                      </form>
                   </div>
               </div>
             </div>
@@ -29,7 +33,7 @@
                   <div class="col-xs-4" align="center"><input class="search" type="text" name="text" size="20" value="" maxlength="100" placeholder="Search"></div>
 
                   <div class="col-xs-4 user" align="right">
-                      <form action="main" method="POST">
+                      <form action="/main/" method="POST">
                           {% csrf_token %}
                           {{ form }}
                           <input type="submit" value="Вход"/>
