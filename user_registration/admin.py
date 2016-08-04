@@ -25,7 +25,8 @@ class UserCreationForm(forms.ModelForm):
             'gender',
             'birth_date',
             'info',
-            'avatar'
+            'avatar',
+            'rating'
         )
 
     def clean_password2(self):
@@ -67,7 +68,8 @@ class UserChangeForm(forms.ModelForm):
             'info',
             'is_active',
             'is_admin',
-            'avatar'
+            'avatar',
+            'rating'
         )
 
     def clean_password(self):
@@ -96,6 +98,7 @@ class UserAdmin(BaseUserAdmin):
         'birth_date',
         'info',
         'avatar',
+        'rating',
         'is_active',
         'is_admin',
     )
@@ -113,6 +116,7 @@ class UserAdmin(BaseUserAdmin):
             'birth_date',
             'info',
             'avatar',
+            'rating',
             'is_active',
         )}),
         ('Permissions', {'fields': ('is_admin',)}),
@@ -136,6 +140,7 @@ class UserAdmin(BaseUserAdmin):
                 'birth_date',
                 'info',
                 'avatar',
+                'rating',
                 'is_active',
             )}
         ),

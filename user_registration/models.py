@@ -5,7 +5,7 @@ from django.contrib.auth.models import (
 
 
 class ProfileManager(BaseUserManager):
-    def create_user(self, email, city, MyUsername, phone, first_name, last_name, address, gender, birth_date, info, avatar, password=None):
+    def create_user(self, email, city, MyUsername, phone, first_name, last_name, address, gender, birth_date, info, avatar, rating, password=None):
         if not email:
             raise ValueError('Users must have an email address')
 
@@ -21,13 +21,14 @@ class ProfileManager(BaseUserManager):
             gender=gender,
             birth_date=birth_date,
             info=info,
-            avatar=avatar
+            avatar=avatar,
+            rating=rating
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, city, MyUsername, phone, first_name, last_name, address, gender, birth_date, info, avatar, password=None):
+    def create_superuser(self, email, city, MyUsername, phone, first_name, last_name, address, gender, birth_date, info, avatar, rating, password=None):
         user = self.create_user(
             email=self.normalize_email(email),
             password=password,
@@ -40,7 +41,8 @@ class ProfileManager(BaseUserManager):
             gender=gender,
             birth_date=birth_date,
             info=info,
-            avatar=avatar
+            avatar=avatar,
+            rating=rating
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -64,13 +66,25 @@ class Profile(AbstractBaseUser):
     gender = models.BooleanField(null=False)
     birth_date = models.DateField(null=False)
     info = models.TextField(null=True)
-    avatar = models.ImageField(upload_to='avatars/', null=True)
+    avatar = models.ImageField(upload_to='avatars', null=True)
+    rating = models.SmallIntegerField(default=0)
 
     object = ProfileManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [
-        'MyUsername'
+        'MyUsername',
+        'city',
+        'MyUsername',
+        'phone',
+        'first_name',
+        'last_name',
+        'address',
+        'gender',
+        'birth_date',
+        'info',
+        'avatar',
+        'rating',
     ]
 
     def get_full_name(self):

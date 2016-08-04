@@ -19,6 +19,6 @@ class MyCustomUserForm(RegistrationForm):
             'gender',
             'birth_date',
             'info',
-            'avatar',
+            'avatar'
         ]
 
