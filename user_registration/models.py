@@ -75,7 +75,6 @@ class Profile(AbstractBaseUser):
     REQUIRED_FIELDS = [
         'MyUsername',
         'city',
-        'MyUsername',
         'phone',
         'first_name',
         'last_name',

@@ -17,10 +17,9 @@ def index(request):
             return render(request, 'main/index.html', {'user': request.user})
         else:
             form = LogginForm()
-            return render(request, 'main/index.html', {'form': form})
+            return render(request, 'main/index.html', {'user_form': form})
 
 
 def logout_view(request):
     logout(request)
     return redirect('/main/')
-

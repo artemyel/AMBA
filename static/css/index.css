@@ -1,0 +1,82 @@
+body {
+  overflow-x: hidden;
+}
+
+.field {
+  background: #D5D5D5;
+  border: 1px solid #95989A;
+  margin-top: 10px;
+}
+
+.categories a{
+  display: block;
+  height: 26px;
+  color: #146AF4;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: default;
+}
+.categories ul{
+  list-style-type: none;
+  padding: 0;
+  width: 110px;
+  margin-right: 0;
+}
+.categories li{
+  margin-left: 5px;
+  position: relative;
+}
+li > .subcat {
+  background-color: #D5D5D5;
+  border: 1px solid #95989A;
+  position: absolute;
+  display: none;
+  left: 105px;
+  top: 0;
+}
+li:hover > .subcat {
+  display: block;
+}
+.locate {
+  color: black;
+}
+
+.support {
+  color: black;
+}
+
+.main-content {
+  margin-bottom: 20px;
+}
+
+#pop {
+  border-bottom: 1px solid #95989A;
+  font-size: 16px;
+}
+
+.slider {
+    margin: 50px auto;
+    padding-top: 20px;
+    margin-top: 0;
+}
+
+.regular {
+  width: 80%;
+}
+
+.slick-slide {
+  margin: 0 0.5%;
+}
+
+.slick-slide img {
+  width: 100%;
+}
+
+.fade-slick {
+  width: 90%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
