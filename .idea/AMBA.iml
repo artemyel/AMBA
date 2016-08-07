@@ -13,8 +13,9 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="Python 3.4.3 virtualenv at D:\webProjects\e-sig-site\AMBA-master\myenv (3)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.4.3 virtualenv at D:\webProjects\e-sig-site\AMBA-master\myenv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery-1.11.0" level="application" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="myDocStringFormat" value="Google" />

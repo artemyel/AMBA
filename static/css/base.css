@@ -1,59 +1,65 @@
-
 @font-face {
-  font-family: "Exo 2";
-  src: url(../fonts/Exo2-Regular.ttf);
+    font-family: "Exo 2";
+    src: url(../fonts/Exo2-Regular.ttf);
 }
 
 body * {
-  font-family: "Exo 2"
+    font-family: "Exo 2"
 }
 
 body {
-  font-family: "Exo 2";
-  background-color: #E6E6E6 !important;
+    font-family: "Exo 2";
+    background-color: #E6E6E6 !important;
 }
 
+.main-content {
+    position: relative;
+}
 
 .img-rounded {
-  width: 30px;
-  height: 30px;
-  margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
 }
 
 .header {
-  background: black;
-  color: white;
-  padding: 5px 5px 5px 5px;
-  font-size: 17px;
-  width: 100%;
+    background: black;
+    color: white;
+    padding: 5px 5px 5px 5px;
+    font-size: 17px;
+    width: 100%;
 }
 
 .header > .row {
-  margin: 0;
-  width: 100%;
-  padding: 0;
+    margin: 0;
+    width: 100%;
+    padding: 0;
 }
 
 .search {
-  width: 100%;
-  max-width: 230px;
-  margin-top: 4px;
-  font-size: 80%;
-  background-image: url(../img/search-icon-white2.png);
-  background-repeat: no-repeat;
-  background-position: 4px 60%;
-  background-color: #555;
-  border: 0;
-  outline: none;
-  white-space: nowrap;
-  color: #cdcdcd;
-  padding-left: 20px;
+    width: 100%;
+    max-width: 230px;
+    margin-top: 4px;
+    font-size: 80%;
+    background-image: url(../img/search-icon-white2.png);
+    background-repeat: no-repeat;
+    background-position: 4px 60%;
+    background-color: #555;
+    border: 0;
+    outline: none;
+    white-space: nowrap;
+    color: #cdcdcd;
+    padding-left: 20px;
 }
-.user span {
-  padding-left: 10px;
+
+.user-signed a {
+    padding-left: 10px;
 
 }
-a,a:active,a:visited,a:hover {
-  text-decoration: none !important;
-  color: #FFFFFF !important;
+.user-unsigned a {
+}
+
+.header a, a:active, a:visited, a:hover {
+    text-decoration: none !important;
+    color: #FFFFFF !important;
 }

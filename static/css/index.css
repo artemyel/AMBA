@@ -1,7 +1,9 @@
 body {
   overflow-x: hidden;
 }
-
+.container-fluid {
+  opacity: .99;
+}
 .field {
   background: #D5D5D5;
   border: 1px solid #95989A;
