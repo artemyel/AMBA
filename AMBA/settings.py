@@ -30,9 +30,12 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'user_registration.Profile'
 ACCOUNT_ACTIVATION_DAYS = 7
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'registration',
     'user_registration',
     'main.apps.MainConfig',

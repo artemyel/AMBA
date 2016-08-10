@@ -4,6 +4,7 @@ from django.contrib.auth.models import (
 )
 
 
+
 class ProfileManager(BaseUserManager):
     def create_user(self, email, city, MyUsername, phone, first_name, last_name, address, gender, birth_date, info,
                     avatar, rating, password=None):
@@ -56,6 +57,10 @@ class Profile(AbstractBaseUser):
         verbose_name='email address',
         max_length=255,
         unique=True,
+        error_messages={
+            'blank': 'invalid',
+            'uniqueness': "invalid",
+        },
     )
     city = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
@@ -65,7 +70,15 @@ class Profile(AbstractBaseUser):
     first_name = models.CharField(max_length=255, null=False)
     last_name = models.CharField(max_length=255, null=False)
     address = models.CharField(max_length=255, null=False)
-    gender = models.BooleanField(null=False)
+
+    MAN = 'м'
+    WOMAN = 'ж'
+    GENDER_CHOICE = (
+        (MAN, 'Мужчина'),
+        (WOMAN, 'Женщина'),
+    )
+    gender = models.CharField(max_length=2, choices=GENDER_CHOICE, default=MAN)
+    # gender = models.BooleanField(null=False)
     birth_date = models.DateField(null=False)
     info = models.TextField(null=True)
     avatar = models.ImageField(upload_to='avatars', null=True)

@@ -1,16 +1,42 @@
 {% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% crispy mycustomuserform mycustomuserform.helper %}
+
+{% block references %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/registration.css" %}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="{% static "js/jquery-birthday-picker.min.js" %}"></script>
+
+    <script>
+    $( function() {
+        $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+
+        $("select.birth-year").val(["1995"]);
+        $("select.birth-month").val('1-12');
+    } );
+    </script>
+{% endblock %}
 {% block content %}
-<h1>Регистрация</h1>
-<form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
-<dl class="register">
-{% for field in form %}
-    <dt>{{ field.label_tag }}</dt>
-    <dd class="clearfix">{{ field }}
-    {% if field.help_text %}<div class="clearfix">{{ field.help_text }}</div>{% endif %}
-    {% if field.errors %}<div class="myerrors clearfix">{{ field.errors }}</div>{% endif %}
-    </dd>
-{% endfor %}
-</dl>
-<input type="submit" value="Зарегистрироваться" / class="clearfix">
-</form>
+    <h1>Регистрация</h1>
+    <form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+        {% comment %}<dl class="register">
+            {% for field in form %}
+                <dt>{{ field.label_tag }}</dt>
+                <dd class="clearfix">{{ field }}
+                    {% if field.help_text %}
+                        <div class="clearfix">{{ field.help_tzext }}</div>{% endif %}
+                    {% if field.errors %}
+                        <div class="myerrors clearfix">{{ field.errors }}</div>{% endif %}
+                </dd>
+            {% endfor %}
+        </dl>{% endcomment %}
+        {% crispy form %}
+    </form>
+
 {% endblock %}
