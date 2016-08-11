@@ -59,8 +59,29 @@ body {
 .user-unsigned a {
 }
 
-.header a, a:active, a:visited, a:hover {
+
+
+/*.user-unsigned,.user-signed > a, a:active, a:visited, a:hover {
     text-decoration: none !important;
     color: #FFFFFF !important;
+}*/
+
+.form-signin > h2 {
+    margin-top: 0px;
+}
+.user-unsigned a, a:active, a:visited, a:hover {
+    text-decoration: none !important;
+    color: #FFFFFF !important;
+}
+.user-signed a, a:active, a:visited, a:hover {
+    text-decoration: none !important;
+    color: #FFFFFF !important;
+}
+.register_link{
+    margin-bottom: 15px;
+}
+.register_link > a {
+    color: #23527c !important;
+    text-decoration: underline;
 }
 

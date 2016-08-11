@@ -22,7 +22,9 @@
     } );
     </script>
 {% endblock %}
+
 {% block content %}
+    {% if not user.is_authenticated %}
     <h1>Регистрация</h1>
     <form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
         {% comment %}<dl class="register">
@@ -38,5 +40,8 @@
         </dl>{% endcomment %}
         {% crispy form %}
     </form>
+    {% else %}
+        <h4>Вы уже зарегестрированны</h4>
+    {% endif %}
 
 {% endblock %}

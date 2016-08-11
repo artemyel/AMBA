@@ -10,19 +10,21 @@ from django.utils.translation import ugettext_lazy as _
 
 class MyCustomUserForm(RegistrationForm):
     MyUsername = forms.CharField(
-        label='Пользователь',
+        label='Имя пользователя',
     )
     email = forms.CharField(
-        label='Емаил',
+        label='Email',
         error_messages={'blank': 'no data!'}
     )
+
+
 
     helper = FormHelper()
     helper.layout = Layout(
         Div('email', css_class='col-sm-12'),
         Div(
-            Div('last_name', css_class="col-sm-6"),
             Div('first_name', css_class="col-sm-6"),
+            Div('last_name', css_class="col-sm-6"),
         ),
         Div(
             Div('password1', css_class='col-lg-6'),
@@ -37,7 +39,7 @@ class MyCustomUserForm(RegistrationForm):
         Div('info', css_class='col-sm-12'),
         Div('avatar', css_class='col-sm-12'),
         Div(
-            Submit('submit', u'Submit', css_class='col-xs-12 btn btn-success'),
+            Submit('submit', u'Зарегестрироваться', css_class='col-xs-12 btn btn-success'),
             css_class='col-sm-12 test_css',
         ),
 
@@ -67,6 +69,19 @@ class MyCustomUserForm(RegistrationForm):
                 years=range(2016, 1900, -1),
                 attrs=({'style': 'width: 33%; display: inline-block'})
             )
+        }
+        labels = {
+            'city': 'Город',
+            'phone': 'Телефон',
+            'first_name': 'Имя',
+            'last_name': 'Фамилия',
+            'address': 'Адрес',
+            'gender': 'Кто вы?',
+            'birth_date': 'Дата рождения',
+            'info': 'Дополнительная информация',
+            'avatar': 'Аватар',
+
+
         }
 
 
