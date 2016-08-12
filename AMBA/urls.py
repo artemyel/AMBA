@@ -27,7 +27,8 @@ urlpatterns = [
         ),
         name='registration_register',
         ),
-    url(r'^accounts/', include('registration.backends.hmac.urls')),
+    #url(r'^accounts/', include('registration.backends.hmac.urls')),
+    url(r'^accounts/', include('user_registration.urls')),
     url(r'^main/', include('main.urls')),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
