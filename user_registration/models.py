@@ -71,13 +71,13 @@ class Profile(AbstractBaseUser):
     last_name = models.CharField(max_length=255, null=False)
     address = models.CharField(max_length=255, null=False)
 
-    MAN = 'м'
-    WOMAN = 'ж'
+    MAN = 'Мужчина'
+    WOMAN = 'Женщина'
     GENDER_CHOICE = (
         (MAN, 'Мужчина'),
         (WOMAN, 'Женщина'),
     )
-    gender = models.CharField(max_length=2, choices=GENDER_CHOICE, default=MAN)
+    gender = models.CharField(max_length=7, choices=GENDER_CHOICE, default=MAN)
     # gender = models.BooleanField(null=False)
     birth_date = models.DateField(null=False)
     info = models.TextField(null=True)
