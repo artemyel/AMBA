@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import LogginForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
+from main.models import Category
 
 
 def index(request):
@@ -29,4 +30,10 @@ def logout_view(request):
 
 
 def category_view(request, category_name):
-    return HttpResponse(category_name)
+    categories_list = Category.objects.all()
+    categories_list = [str(category).lower().replace(" ", "") for category in categories_list]
+    output = ', '.join([c for c in categories_list])
+    if category_name in categories_list:
+        return HttpResponse(category_name)
+    else:
+        return HttpResponse("NO SUCH CATEGORY " + output)
