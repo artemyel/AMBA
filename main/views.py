@@ -23,7 +23,10 @@ def index(request):
             return render(request, 'main/index.html', {'user_form': form})
 
 
-
 def logout_view(request):
     logout(request)
     return redirect('/main/')
+
+
+def category_view(request, category_name):
+    return HttpResponse(category_name)
