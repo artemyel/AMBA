@@ -1,0 +1,7 @@
+/db.sqlite3
+/.idea/
+/media/*
+!.dummy
+__pycache__
+*.pyc
+/AMBA/files/media/avatars/*
