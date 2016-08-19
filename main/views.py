@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .forms import LogginForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from main.models import Category
 
@@ -22,11 +22,6 @@ def index(request):
         else:
             form = LogginForm()
             return render(request, 'main/index.html', {'user_form': form})
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('/main/')
 
 
 def category_view(request, category_name):

@@ -1,24 +1,18 @@
-from crispy_forms.layout import Submit, Layout, HTML
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Div, Submit
+from django import forms
 from registration.forms import RegistrationForm
 from accounts.models import Profile
-from django.forms import widgets
-from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div
-
-from django.utils.translation import ugettext_lazy as _
 
 
 class MyCustomUserForm(RegistrationForm):
-    MyUsername = forms.CharField(
+    username = forms.CharField(
         label='Имя пользователя',
     )
     email = forms.CharField(
         label='Email',
         error_messages={'blank': 'no data!'}
     )
-
-
 
     helper = FormHelper()
     helper.layout = Layout(
@@ -31,7 +25,7 @@ class MyCustomUserForm(RegistrationForm):
             Div('password1', css_class='col-lg-6'),
             Div('password2', css_class='col-lg-6', ),
         ),
-        Div('MyUsername', css_class='col-sm-12'),
+        Div('username', css_class='col-sm-12'),
         Div('city', css_class='col-sm-12'),
         Div('phone', css_class='col-sm-12'),
         Div('address', css_class='col-sm-12'),
@@ -40,7 +34,7 @@ class MyCustomUserForm(RegistrationForm):
         Div('info', css_class='col-sm-12'),
         Div('avatar', css_class='col-sm-12'),
         Div(
-            Submit('submit', u'Зарегестрироваться', css_class='col-xs-12 btn btn-success'),
+            Submit('submit', u'Зарегистрироваться', css_class='col-xs-12 btn btn-success'),
             css_class='col-sm-12 test_css',
         ),
 
@@ -54,7 +48,7 @@ class MyCustomUserForm(RegistrationForm):
             'password1',
             'password2',
             'city',
-            'MyUsername',
+            "username",
             'phone',
             'first_name',
             'last_name',
@@ -66,7 +60,7 @@ class MyCustomUserForm(RegistrationForm):
         ]
 
         widgets = {
-            'birth_date': widgets.SelectDateWidget(
+            'birth_date': forms.widgets.SelectDateWidget(
                 years=range(2016, 1900, -1),
                 attrs=({'style': 'width: 33%; display: inline-block'})
             )

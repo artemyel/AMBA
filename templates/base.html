@@ -22,12 +22,12 @@
           <div class="col-xs-4"><a href="/main">Санкт-Петербург</a></div>
           <div class="col-xs-4" align="center"><input class="search" type="text" name="text" size="20" value="" maxlength="100" placeholder="Search"></div>
           <div class="col-xs-4 user-signed" align="right">
-              <a href="/accounts/{{ user.id }}/profile">{{ user.MyUsername }} <img src="{{ user.avatar.url }}" class="img-rounded"></a>
+              <a href="/accounts/{{ user.id }}/profile">{{ user.username }} <img src="{{ user.avatar.url }}" class="img-rounded"></a>
 
               {% comment %}
                 TODO Сделать так чтобы выход производился нормально со всех страниц а не только с main, например из
               {% endcomment %}
-              <a href="/main/logout">выйти</a>
+              <a href="/accounts/logout">выйти</a>
               {% comment %}<form action="/main/logout/" method="POST">
                   {% csrf_token %}
                   <a href="logout">выйти</a>
@@ -74,7 +74,7 @@
                     </label>
                 </div>
                 <div class="register_link" align="center">
-                    <a href="/accounts/register">Зарегестрироваться?</a>
+                    <a href="/accounts/register">Зарегистрироваться?</a>
                 </div>
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

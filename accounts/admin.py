@@ -17,7 +17,7 @@ class UserCreationForm(forms.ModelForm):
         fields = (
             'email',
             'city',
-            'MyUsername',
+            "username",
             'phone',
             'first_name',
             'last_name',
@@ -45,6 +45,7 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
+
 class UserChangeForm(forms.ModelForm):
     """A form for updating users. Includes all the fields on
     the user, but replaces the password field with admin's
@@ -58,7 +59,7 @@ class UserChangeForm(forms.ModelForm):
             'email',
             'password',
             'city',
-            'MyUsername',
+            "username",
             'phone',
             'first_name',
             'last_name',
@@ -78,6 +79,7 @@ class UserChangeForm(forms.ModelForm):
         # field does not have access to the initial value
         return self.initial["password"]
 
+
 class UserAdmin(BaseUserAdmin):
     # The forms to add and change user instances
     form = UserChangeForm
@@ -89,7 +91,7 @@ class UserAdmin(BaseUserAdmin):
     list_display = (
         'email',
         'city',
-        'MyUsername',
+        'username',
         'phone',
         'first_name',
         'last_name',
@@ -107,7 +109,7 @@ class UserAdmin(BaseUserAdmin):
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': (
             'city',
-            'MyUsername',
+            'username',
             'phone',
             'first_name',
             'last_name',
@@ -131,7 +133,7 @@ class UserAdmin(BaseUserAdmin):
                 'city',
                 'password1',
                 'password2',
-                'MyUsername',
+                'username',
                 'phone',
                 'first_name',
                 'last_name',

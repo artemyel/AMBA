@@ -38,7 +38,7 @@ class ParameterValue(models.Model):
         return self.parameter
 
 
-class Lot(models.Model):
+class Offer(models.Model):
     title = models.CharField(max_length=255)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -51,13 +51,13 @@ class Lot(models.Model):
         return self.title
 
 
-class LotImages(models.Model):
-    lot = models.ForeignKey(Lot, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='LotImages/')
+class OfferImage(models.Model):
+    offer = models.ForeignKey(Offer, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='lot_images/')
     is_main = models.BooleanField(null=False)
 
     def __str__(self):
-        return self.image
+        return self.image.name
 
 
 

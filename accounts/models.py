@@ -1,12 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
-)
-
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 
 class ProfileManager(BaseUserManager):
-    def create_user(self, email, city, MyUsername, phone, first_name, last_name, address, gender, birth_date, info,
+    def create_user(self, email, city, username, phone, first_name, last_name, address, gender, birth_date, info,
                     avatar, rating, password=None):
         if not email:
             raise ValueError('Users must have an email address')
@@ -15,7 +12,7 @@ class ProfileManager(BaseUserManager):
             email=self.normalize_email(email),
             password=password,
             city=city,
-            MyUsername=MyUsername,
+            username=username,
             phone=phone,
             first_name=first_name,
             last_name=last_name,
@@ -30,13 +27,13 @@ class ProfileManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, city, MyUsername, phone, first_name, last_name, address, gender, birth_date, info,
+    def create_superuser(self, email, city, username, phone, first_name, last_name, address, gender, birth_date, info,
                          avatar, rating, password=None):
         user = self.create_user(
             email=self.normalize_email(email),
             password=password,
             city=city,
-            MyUsername=MyUsername,
+            username=username,
             phone=phone,
             first_name=first_name,
             last_name=last_name,
@@ -65,19 +62,19 @@ class Profile(AbstractBaseUser):
     city = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    MyUsername = models.CharField(max_length=255, unique=True)
+    username = models.CharField(max_length=255, unique=True)
     phone = models.CharField(max_length=20, null=False)
     first_name = models.CharField(max_length=255, null=False)
     last_name = models.CharField(max_length=255, null=False)
     address = models.CharField(max_length=255, null=False)
 
-    MAN = 'Мужчина'
-    WOMAN = 'Женщина'
+    MAN = 1
+    WOMAN = 2
     GENDER_CHOICE = (
         (MAN, 'Мужчина'),
         (WOMAN, 'Женщина'),
     )
-    gender = models.CharField(max_length=7, choices=GENDER_CHOICE, default=MAN)
+    gender = models.SmallIntegerField(choices=GENDER_CHOICE, default=MAN)
     # gender = models.BooleanField(null=False)
     birth_date = models.DateField(null=False)
     info = models.TextField(null=True)
@@ -88,7 +85,7 @@ class Profile(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [
-        'MyUsername',
+        'username',
         'city',
         'phone',
         'first_name',
@@ -110,13 +107,15 @@ class Profile(AbstractBaseUser):
     def __str__(self):
         return self.email
 
-    def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
+    @staticmethod
+    def has_perm(perm, obj=None):
+        """Does the user have a specific permission?"""
         # Simplest possible answer: Yes, always
         return True
 
-    def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
+    @staticmethod
+    def has_module_perms(app_label):
+        """Does the user have permissions to view the app `app_label`?"""
         # Simplest possible answer: Yes, always
         return True
 

@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Category, Parameter, Product, ParameterValue, Lot, LotImages
+from .models import Category, Parameter, Product, ParameterValue, Offer, OfferImage
 
 admin.site.register(Category)
 admin.site.register(Parameter)
 admin.site.register(Product)
 admin.site.register(ParameterValue)
-admin.site.register(Lot)
-admin.site.register(LotImages)
+admin.site.register(Offer)
+admin.site.register(OfferImage)
