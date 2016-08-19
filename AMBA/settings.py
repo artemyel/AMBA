@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'user_registration.Profile'
+AUTH_USER_MODEL = 'accounts.Profile'
 ACCOUNT_ACTIVATION_DAYS = 7
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -37,7 +37,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 INSTALLED_APPS = [
     'crispy_forms',
     'registration',
-    'user_registration',
+    'accounts',
     'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from registration.backends.hmac.views import RegistrationView
-from user_registration.forms import MyCustomUserForm
+from accounts.forms import MyCustomUserForm
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -28,7 +28,7 @@ urlpatterns = [
         name='registration_register',
         ),
     #url(r'^accounts/', include('registration.backends.hmac.urls')),
-    url(r'^accounts/', include('user_registration.urls')),
+    url(r'^accounts/', include('accounts.urls')),
     url(r'^main/', include('main.urls')),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

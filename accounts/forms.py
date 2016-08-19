@@ -1,6 +1,6 @@
 from crispy_forms.layout import Submit, Layout, HTML
 from registration.forms import RegistrationForm
-from user_registration.models import Profile
+from accounts.models import Profile
 from django.forms import widgets
 from django import forms
 from crispy_forms.helper import FormHelper
