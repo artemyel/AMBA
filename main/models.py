@@ -4,6 +4,7 @@ from accounts.models import Profile
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
+    short_name = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return self.name
@@ -38,10 +39,19 @@ class ParameterValue(models.Model):
         return self.parameter
 
 
+class CommunityProduct(models.Model):
+    name = models.CharField(max_length=200)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    rating = models.SmallIntegerField(default=0)
+
+    def __str__(self):
+        return self.name
+
+
 class Offer(models.Model):
     title = models.CharField(max_length=255)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(CommunityProduct, on_delete=models.CASCADE)
     description = models.TextField()
     short_description = models.CharField(max_length=255, null=True)
     price = models.SmallIntegerField()
@@ -58,6 +68,5 @@ class OfferImage(models.Model):
 
     def __str__(self):
         return self.image.name
-
 
 # TODO перенести Offers и OfferImage в accounts

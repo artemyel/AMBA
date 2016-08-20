@@ -3,13 +3,22 @@ from crispy_forms.layout import Layout, Div, Submit
 from django import forms
 from registration.forms import RegistrationForm
 from accounts.models import Profile
-from main.models import Offer
+from main.models import Offer, CommunityProduct, Category
 
 
 class OfferForm(forms.ModelForm):
+
     class Meta:
         model = Offer
-        fields = ['title', 'product', 'description', 'short_description', 'price', 'meet_place']
+        fields = ['title', 'description', 'short_description', 'price', 'meet_place']
+
+
+class CommunityProductForm(forms.ModelForm):
+    category = forms.ModelChoiceField(queryset=Category.objects.all())
+
+    class Meta:
+        model = CommunityProduct
+        fields = ['name', 'category']
 
 
 class MyCustomUserForm(RegistrationForm):
@@ -83,8 +92,4 @@ class MyCustomUserForm(RegistrationForm):
             'info': 'Дополнительная информация',
             'avatar': 'Аватар',
 
-
         }
-
-
-
