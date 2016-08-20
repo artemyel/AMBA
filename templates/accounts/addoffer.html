@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="/accounts/add_offer" method="POST">
+        {% csrf_token %}
+        {{ offer_form }}
+        <input id="submit_btn" type="submit" value="Подать объявление"/>
+    </form>
+    {{ user }}
+{% endblock %}

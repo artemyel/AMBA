@@ -3,6 +3,13 @@ from crispy_forms.layout import Layout, Div, Submit
 from django import forms
 from registration.forms import RegistrationForm
 from accounts.models import Profile
+from main.models import Offer
+
+
+class OfferForm(forms.ModelForm):
+    class Meta:
+        model = Offer
+        fields = ['title', 'product', 'description', 'short_description', 'price', 'meet_place']
 
 
 class MyCustomUserForm(RegistrationForm):

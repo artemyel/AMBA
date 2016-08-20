@@ -60,4 +60,4 @@ class OfferImage(models.Model):
         return self.image.name
 
 
-
+# TODO перенести Offers и OfferImage в accounts

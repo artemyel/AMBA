@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from main.models import Category
 
 
+# TODO пофиксить/добавить else к if
 def index(request):
     if request.method == 'POST':
         form = LogginForm(request.POST)
@@ -14,8 +15,7 @@ def index(request):
                 if user.is_active:
                     login(request, user)
                     return render(request, 'main/index.html', {'user': user})
-
-
+    # TODO отделить log_in view от main view
     else:
         if request.user.is_authenticated:
             return render(request, 'main/index.html', {'user': request.user})
