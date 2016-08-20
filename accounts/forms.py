@@ -7,18 +7,38 @@ from main.models import Offer, CommunityProduct, Category
 
 
 class OfferForm(forms.ModelForm):
+    def __init__(self,*args,**kwargs):
+        super(OfferForm, self).__init__(*args,**kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            'title', 'description', 'short_description', 'price', 'meet_place',
+            Submit('submit',u'Submit',css_class='btn btn-success')
+        )
 
     class Meta:
         model = Offer
         fields = ['title', 'description', 'short_description', 'price', 'meet_place']
 
+        labels = {
+            'title': 'Название объявления',
+            'description': 'Описание объявления',
+            'short_description': 'Краткое описание',
+            'price': 'Цена',
+            'meet_place': 'Место встречи',
+        }
+
 
 class CommunityProductForm(forms.ModelForm):
-    category = forms.ModelChoiceField(queryset=Category.objects.all())
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), label="Категория")
 
     class Meta:
         model = CommunityProduct
         fields = ['name', 'category']
+
+        labels = {
+            'name': 'Название прововаемого продукта',
+        }
 
 
 class MyCustomUserForm(RegistrationForm):
