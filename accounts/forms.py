@@ -7,14 +7,6 @@ from main.models import Offer, CommunityProduct, Category
 
 
 class OfferForm(forms.ModelForm):
-    def __init__(self,*args,**kwargs):
-        super(OfferForm, self).__init__(*args,**kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.layout = Layout(
-            'title', 'description', 'short_description', 'price', 'meet_place',
-            Submit('submit',u'Submit',css_class='btn btn-success')
-        )
 
     class Meta:
         model = Offer
