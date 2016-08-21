@@ -14,8 +14,15 @@
         <div class="col-xs-12 col-sm-11 col-md-10 col-lg-9 col-centered">
             <form action="/accounts/add_offer" method="POST">
                 {% csrf_token %}
+
                 {{ community_product_form | crispy }}
+
                 {{ offer_form | crispy }}
+
+                {{ formset.management_form }}
+                {% for form in formset %}
+                    {{ form }}
+                {% endfor %}
                 <input id="submit_btn" type="submit" class="col-xs-12 btn btn-success" value="Подать объявление"/>
             </form>
         </div>

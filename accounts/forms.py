@@ -3,7 +3,7 @@ from crispy_forms.layout import Layout, Div, Submit
 from django import forms
 from registration.forms import RegistrationForm
 from accounts.models import Profile
-from main.models import Offer, CommunityProduct, Category
+from main.models import Category, Offer, CommunityProduct, OfferImage
 
 
 class OfferForm(forms.ModelForm):
@@ -31,6 +31,14 @@ class CommunityProductForm(forms.ModelForm):
         labels = {
             'name': 'Название прововаемого продукта',
         }
+
+
+class ImageForm(forms.ModelForm):
+    image = forms.ImageField(label='Image')
+
+    class Meta:
+        model = OfferImage
+        fields = ('image', )
 
 
 class MyCustomUserForm(RegistrationForm):

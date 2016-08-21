@@ -69,4 +69,3 @@ class OfferImage(models.Model):
     def __str__(self):
         return self.image.name
 
-# TODO перенести Offers и OfferImage в accounts
