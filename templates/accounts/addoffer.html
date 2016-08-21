@@ -12,7 +12,7 @@
     <div class="row">
 
         <div class="col-xs-12 col-sm-11 col-md-10 col-lg-9 col-centered">
-            <form action="/accounts/add_offer" method="POST">
+            <form action="/accounts/add_offer" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
 
                 {{ community_product_form | crispy }}

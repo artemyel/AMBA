@@ -38,10 +38,11 @@ def add_offer(request):
                 new_community_product = community_product_form.save(commit=False)
                 new_community_product.save()
                 for form in formset.cleaned_data:
-                    image = form['image']
-                    photo = OfferImage(offer=new_offer, image=image, is_main=False)
-                    # TODO продумать работу is_main
-                    photo.save()
+                    if form:
+                        image = form['image']
+                        photo = OfferImage(offer=new_offer, image=image, is_main=False)
+                        # TODO продумать работу is_main
+                        photo.save()
                 return redirect('/main/')
             else:
                 pass
