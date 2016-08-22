@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, get_list_or_404
 from .forms import LogginForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from main.models import Category
+from main.models import Category, Offer, OfferImage
 
 
 # TODO пофиксить/добавить else к if
@@ -32,3 +32,12 @@ def category_view(request, category_name):
         return HttpResponse(category_name)
     else:
         return HttpResponse("NO SUCH CATEGORY " + output)
+
+
+def offer_view(request, offer_id):
+    offer = get_object_or_404(Offer, pk=offer_id)
+    offer_image_list = OfferImage.objects.filter(offer=offer.pk)
+    return render(request, 'offer/offer.html', {
+        'offer': offer,
+        'offer_image_list': offer_image_list,
+    })

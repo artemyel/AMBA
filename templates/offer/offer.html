@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% comment %}Наследуемся от base.html - базовые стили, всплывающее окно авторизации и т.д.{% endcomment %}
+
+
+{% comment %}Загрузка статик файлов, css js и так далее{% endcomment %}
+{% load staticfiles %}
+
+{% comment %}Здесь подгружаем статик файлы для этого шаблона{% endcomment %}
+{% block references %}
+    {{ block.super }}
+    {% comment %}Добавление css стиля{% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/offer.css" %}">
+    {% comment %}Подргружаем js{% endcomment %}
+    <script src="{% static 'js/offer.js' %}" type="text/javascript" ></script>
+
+
+{% endblock %}
+
+{% comment %}Здесь непосредственно сам код html{% endcomment %}
+{% block content %}
+    <p>Заголовок предложения: {{ offer.title }}</p>
+    <p>Название продукта: {{ offer.product.name }}</p>
+    <p>Категория: {{ offer.product.category.name }}</p>
+    <p>Фото предложения:</p>
+    <img src="{{ offer_image_list.1.image.url }}">
+
+
+
+{% endblock %}
