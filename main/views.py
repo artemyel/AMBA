@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import LogginForm, QueryForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from main.models import Category, Offer
+from main.models import Category, Offer, OfferImage
 from django.views.generic import ListView
 
 
@@ -29,7 +29,7 @@ class CategoryView(ListView):
     model = Offer
     context_object_name = 'offers'
     template_name = 'main/offers.html'
-    paginate_by = 2
+    paginate_by = 1
     form = QueryForm()
 
     def get_queryset(self):
@@ -48,3 +48,10 @@ class CategoryView(ListView):
         return ctx
 
 
+def offer_view(request, offer_id):
+    offer = get_object_or_404(Offer, pk=offer_id)
+    offer_image_list = OfferImage.objects.filter(offer=offer.pk)
+    return render(request, 'offer/offer.html', {
+        'offer': offer,
+        'offer_image_list': offer_image_list,
+    })
