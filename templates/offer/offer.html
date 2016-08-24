@@ -18,12 +18,61 @@
 
 {% comment %}Здесь непосредственно сам код html{% endcomment %}
 {% block content %}
-    <p>Заголовок предложения: {{ offer.title }}</p>
-    <p>Название продукта: {{ offer.product.name }}</p>
-    <p>Категория: {{ offer.product.category.name }}</p>
-    <p>Фото предложения:</p>
-    <img src="{{ offer_image_list.1.image.url }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2">
+                <ul class="list-unstyled rightImgOffer">
+                    <li><img onclick="Img(0)" class="imgOffer" src="{{ offer_image_list.0.image.url }}"></li>
+                    <li><img onclick="Img(1)" class="imgOffer" src="{{ offer_image_list.1.image.url }}"></li>
+                    <li><img onclick="Img(2)" class="imgOffer" src="{{ offer_image_list.2.image.url }}"></li>
+                </ul>
+            </div>
+            <div class="col-xs-5">
+                <img id="imgOfferMain" src="{{ offer_image_list.0.image.url }}">
+            </div>
+            <div class="col-xs-5">
+                <div class="col-xs-12">
+                    <h1>{{ offer.product.name }}</h1>
+                    <p>Категория: {{ offer.product.category.name }}</p>
+                    <p>Цена: {{ offer.price }} руб</p>
+                    <p class="Descript">Описание: {{ offer.description }}</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="addInf">Дата публикации</p>
+                <p class="addInf">Рейтинг: {{ offer.product.rating }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="botLine col-xs-12"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <p>Продавец: {{ offer.user.first_name }}</p>
+                <p>Город: {{ offer.user.city }}</p>
+                <p>Место встречи: {{ offer.meet_place }}</p>
+                <p class="addInf "> твитер вк ОДНОКЛАССНИКИ</p>
+            </div>
+            <div class="col-xs-8">
+                {% comment %} TODO похожие товары {% endcomment %}
+            </div>
+        </div>
+    </div>
 
 
+<script>
+    function Img(imgId) {
+        var images = [];
+        {% for image in offer_image_list %}
+            images.push('{{ image }}');
+        {% endfor %}
+        var img = document.getElementById("imgOfferMain");
+        img.src = "/media/"+images[imgId];
+    }
+</script>
+{% comment %} TODO перенести по нормальному JS код в Offer.js {% endcomment %}
 
 {% endblock %}
