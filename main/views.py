@@ -25,13 +25,6 @@ def index(request):
             return render(request, 'main/index.html', {'user_form': form})
 
 
-def category_view(request, category_name):
-    if Category.objects.filter(short_name=category_name):
-        return HttpResponse(category_name)
-    else:
-        return HttpResponse("NO SUCH CATEGORY ")
-
-
 class CategoryView(ListView):
     model = Offer
     context_object_name = 'offers'
@@ -52,7 +45,6 @@ class CategoryView(ListView):
     def get_context_data(self, **kwargs):
         ctx = super(CategoryView, self).get_context_data(**kwargs)
         ctx['form'] = self.form
-        ctx['qa'] = self.queryset
         return ctx
 
 

@@ -4,11 +4,10 @@
 {% block content %}
     <form>
     {{ form }}
-
     </form>
     <ul>
         {% for offer in object_list %}
-            <li>{{ offer.title }}</li>
+            <li>{{ offer.user }}</li>
         {% endfor %}
     </ul>
     {#  <a href="/a/?{% query query_params page=num %}">{{ num }}</a> #}
