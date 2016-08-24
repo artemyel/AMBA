@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load querystring %}
+
+{% block content %}
+    <form>
+    {{ form }}
+
+    </form>
+    <ul>
+        {% for offer in object_list %}
+            <li>{{ offer.title }}</li>
+        {% endfor %}
+    </ul>
+    {#  <a href="/a/?{% query query_params page=num %}">{{ num }}</a> #}
+    <div class="pagination">
+    <span class="page-links">
+        {% if page_obj.has_previous %}
+            <<a href="{% querystring page=page_obj.previous_page_number %}">Previous</a>
+        {% endif %}
+        <span class="page-current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+        {% if page_obj.has_next %}
+            <a href="{% querystring page=page_obj.next_page_number %}">Next</a>
+        {% endif %}
+    </span>
+    </div>
+{% endblock %}
