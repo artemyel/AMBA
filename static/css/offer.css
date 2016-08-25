@@ -19,14 +19,14 @@ body{
 }
 
 .botLine{
-    width:90% !important;
-    margin:1% 5% 1% 5% !important;
+    width:88% !important;
+    margin:1% 7% 1% 5% !important;
     background-color: darkgrey !important;
     height: 2px !important;
 }
 
 .Descript{
-    width:50%;
+    font-size: 2rem;
 }
 .rightImgOffer {
     margin-top: 30%;

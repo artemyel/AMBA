@@ -33,9 +33,9 @@
             <div class="col-xs-5">
                 <div class="col-xs-12">
                     <h1>{{ offer.product.name }}</h1>
-                    <p>Категория: {{ offer.product.category.name }}</p>
-                    <p>Цена: {{ offer.price }} руб</p>
-                    <p class="Descript">Описание: {{ offer.description }}</p>
+                    <p class="Descript"><b>Категория:</b> {{ offer.product.category.name }}</p>
+                    <p class="Descript"><b>Цена:</b> {{ offer.price }} руб</p>
+                    <p class="Descript"><b>Описание:</b> {{ offer.description }}</p>
                 </div>
             </div>
 
@@ -51,9 +51,9 @@
         </div>
         <div class="row">
             <div class="col-xs-4">
-                <p>Продавец: {{ offer.user.first_name }}</p>
-                <p>Город: {{ offer.user.city }}</p>
-                <p>Место встречи: {{ offer.meet_place }}</p>
+                <p><b>Продавец:</b> {{ offer.user.first_name }}</p>
+                <p><b>Город:</b> {{ offer.user.city }}</p>
+                <p><b>Место встречи:</b> {{ offer.meet_place }}</p>
                 <p class="addInf "> твитер вк ОДНОКЛАССНИКИ</p>
             </div>
             <div class="col-xs-8">
@@ -73,6 +73,6 @@
         img.src = "/media/"+images[imgId];
     }
 </script>
-{% comment %} TODO перенести по нормальному JS код в Offer.js {% endcomment %}
+{% comment %}TODO перенести по нормальному JS код в Offer.js {% endcomment %}
 
 {% endblock %}
