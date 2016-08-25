@@ -20,31 +20,11 @@
         <div class="col-sm-2">
           <div class="field categories">
             <ul>
-              <li>
-                <a>Atomizers</a>
-                <div class="subcat">
-                  <ul>
-                    <li>first</li>
-                    <li>second</li>
-                  </ul>
-                </div>
-              </li>
-              <li>
-                <a>Mod Kits</a>
-                <div class="subcat">
-                  <ul>
-                    <li>first</li>
-                    <li>second</li>
-                  </ul>
-                </div>
-              </li>
-              <li><a>Mods</a></li>
-              <li><a>Cartomizers</a></li>
-              <li><a>Clearomizers</a></li>
-              <li><a>Drip Tips</a></li>
-              <li><a>Starter Kits</a></li>
-              <li><a>E-Liquids</a></li>
-              <li><a>Coils</a></li>
+                {% for category in categories %}
+                    <li>
+                        <a href="{{ category.short_name }}/?page=1">{{ category.name }}</a>
+                    </li>
+                {% endfor %}
             </ul>
           </div>
           <div class="field locate"><a href="/accounts/add_offer">Разместить объявление</a></div>
