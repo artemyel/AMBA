@@ -43,9 +43,10 @@ class CategoryView(ListView):
         return qs
 
     def get_context_data(self, **kwargs):
-        ctx = super(CategoryView, self).get_context_data(**kwargs)
-        ctx['form'] = self.form
-        return ctx
+        context = super(CategoryView, self).get_context_data(**kwargs)
+        context['form'] = self.form
+        context['image_list'] = OfferImage.objects.all()
+        return context
 
 
 def offer_view(request, offer_id):

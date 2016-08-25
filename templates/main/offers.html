@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load querystring %}
+{% load main_filters %}
+
 
 {% block content %}
     <form>
@@ -7,7 +9,13 @@
     </form>
     <ul>
         {% for offer in object_list %}
-            <li>{{ offer.user }}</li>
+            <li>
+                {{ offer.user }}
+                {% for image in offer.pk|get_image_list_by_offer %}
+                    <img src="/media/{{ image }}">
+                {% endfor %}
+
+            </li>
         {% endfor %}
     </ul>
     {#  <a href="/a/?{% query query_params page=num %}">{{ num }}</a> #}
