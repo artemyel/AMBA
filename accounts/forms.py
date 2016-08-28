@@ -29,7 +29,7 @@ class CommunityProductForm(forms.ModelForm):
         fields = ['name', 'category']
 
         labels = {
-            'name': 'Название прововаемого продукта',
+            'name': 'Название продоваемого продукта',
         }
 
 

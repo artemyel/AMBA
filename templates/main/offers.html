@@ -1,35 +1,72 @@
 {% extends "base.html" %}
 {% load querystring %}
 {% load main_filters %}
+{% load staticfiles %}
+
+{% block references %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/offers.css" %}">
+{% endblock %}
 
 
 {% block content %}
-    <form>
-    {{ form }}
-    </form>
-    <ul>
-        {% for offer in object_list %}
-            <li>
-                {{ offer.user }}
-                {% for image in offer.pk|get_image_list_by_offer %}
-                    <img src="/media/{{ image }}">
-                {% endfor %}
+    <div class="row" id="swap">
+      <div class="col-xs-6" align="right">Модели</div>
+      <div class="col-xs-6" align="left">Лоты</div>
+    </div>
+    <div class="row" id="main-content">
+      <div class="col-xs-3">
+        <p class="linkStyle line"><a class="linkStyle" href="/main/">AMBA > </a></p><p class="line">{{ category }}</p>
+        <div class="selection field categories">
+            {% for category in categories %}
+                <li class="list-unstyled linkStyle">
+                    <a class="linkStyle" href="/main/{{ category.short_name }}/?page=1">{{ category.name }}</a>
+                </li>
+            {% endfor %}
 
-            </li>
-        {% endfor %}
-    </ul>
-    {#  <a href="/a/?{% query query_params page=num %}">{{ num }}</a> #}
-    <div class="pagination">
-    <span class="page-links">
-        {% if page_obj.has_previous %}
-            <<a href="{% querystring page=page_obj.previous_page_number %}">Previous</a>
-        {% endif %}
-        <span class="page-current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-        {% if page_obj.has_next %}
-            <a href="{% querystring page=page_obj.next_page_number %}">Next</a>
-        {% endif %}
-    </span>
+        </div>
+            <form >
+                {{ form }}
+            </form>
+      </div>
+      <div class="col-xs-9">
+        <div class="row">
+          <div class="col-xs-12">
+              <div class="pagination">
+                <span class="page-links">
+                    {% if page_obj.has_previous %}
+                        <a class="linkStyle" href="{% querystring page=page_obj.previous_page_number %}">
+                            <span>&lt;Previous</span>
+                        </a>
+                    {% endif %}
+                    <span class="page-current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                        <a class="linkStyle" href="{% querystring page=page_obj.next_page_number %}">
+                            <span>Next></span>
+                        </a>
+                    {% endif %}
+                </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            {% for offer in object_list %}
+                <a href="/main/offer/{{ offer.pk}}/">
+                    <div class="col-xs-6 col-sm-4 col-md-3 linkStyle">
+                        <div class="field">
+                            {{ offer.product }}
+                            <img class ="mainImg" src="/media/{{ offer.pk | get_main_image_by_offer }}">
+                            <div class="btn btn-default">Перейти к объявлению</div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="row bottom">
+        <p>твитер ок вк</p>
     </div>
 {% endblock %}

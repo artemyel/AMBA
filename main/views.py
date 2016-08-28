@@ -29,7 +29,7 @@ class CategoryView(ListView):
     model = Offer
     context_object_name = 'offers'
     template_name = 'main/offers.html'
-    paginate_by = 1
+    paginate_by = 12
     form = QueryForm()
 
     def get_queryset(self):
@@ -54,6 +54,8 @@ class CategoryView(ListView):
         context = super(CategoryView, self).get_context_data(**kwargs)
         context['form'] = self.form
         context['image_list'] = OfferImage.objects.all()
+        context['categories'] = Category.objects.filter()
+        context['category'] = Category.objects.get(short_name=self.kwargs['category_name']).name
         return context
 
     def get(self, request, *args, **kwargs):
