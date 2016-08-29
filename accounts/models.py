@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-
+import datetime
+from django.utils import timezone
 
 class ProfileManager(BaseUserManager):
     def create_user(self, email, city, username, phone, first_name, last_name, address, gender, birth_date, info,
@@ -21,7 +22,7 @@ class ProfileManager(BaseUserManager):
             birth_date=birth_date,
             info=info,
             avatar=avatar,
-            rating=rating
+            rating=rating,
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -62,6 +63,7 @@ class Profile(AbstractBaseUser):
     city = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(default=timezone.now)
     username = models.CharField(max_length=255, unique=True)
     phone = models.CharField(max_length=20, null=False)
     first_name = models.CharField(max_length=255, null=False)

@@ -69,6 +69,7 @@ class UserChangeForm(forms.ModelForm):
             'info',
             'is_active',
             'is_admin',
+            'date_joined',
             'avatar',
             'rating'
         )
@@ -103,6 +104,7 @@ class UserAdmin(BaseUserAdmin):
         'rating',
         'is_active',
         'is_admin',
+        'date_joined'
     )
     list_filter = ('is_admin',)
     fieldsets = (
@@ -120,6 +122,7 @@ class UserAdmin(BaseUserAdmin):
             'avatar',
             'rating',
             'is_active',
+            'date_joined',
         )}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
@@ -144,6 +147,7 @@ class UserAdmin(BaseUserAdmin):
                 'avatar',
                 'rating',
                 'is_active',
+                'date_joined',
             )}
         ),
     )

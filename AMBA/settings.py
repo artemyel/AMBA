@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'accounts.Profile'
 ACCOUNT_ACTIVATION_DAYS = 7
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
