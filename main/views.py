@@ -1,9 +1,12 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import LogginForm, QueryForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from main.models import Category, Offer, OfferImage, CommunityProduct
+from main.models import Category, Offer, OfferImage, CommunityProduct, Product, Parameter, ParameterValue
 from django.views.generic import ListView
+import json
+import re
 
 
 # TODO пофиксить/добавить else к if
@@ -46,8 +49,6 @@ class CategoryView(ListView):
             #qs = Offer.objects.filter(product=product).order_by()
             for product in products:
                 qs.append(Offer.objects.get(product=product))
-        if not self.request.user.is_authenticated():
-            return qs.exclude()
         return qs
 
     def get_context_data(self, **kwargs):
@@ -73,3 +74,24 @@ def offer_view(request, offer_id):
         'offer': offer,
         'offer_image_list': offer_image_list,
     })
+
+
+def test_ajax(request):
+    if request.is_ajax():
+        query = re.sub(r'\s+', ' ', request.GET['q'])
+        data = []
+        #items = Product.objects.filter(name__icontains=request.GET['q'])
+        lq = query.split(' ')
+        qs = Q()
+        for i in lq:
+            qs.add(Q(['name__icontains', i]), 'AND')
+        sq = Product.objects.filter(qs)
+        for item in sq:
+            parameters = ParameterValue.objects.filter(product=item)
+            param = []
+            for parameter in parameters:
+                param.append({'name': parameter.parameter.name, 'value': parameter.value})
+            data.append({'id': item.pk, 'name': item.name, 'parameters': param})
+        data = {'items': data}
+        json_data = json.dumps(data)
+        return HttpResponse(json_data, content_type="application/json")

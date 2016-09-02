@@ -59,3 +59,5 @@ def add_offer(request):
     else:
         return redirect('/main/')
         # TODO предложить войти или зарегестрироваться
+
+
