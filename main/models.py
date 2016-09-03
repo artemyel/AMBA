@@ -36,7 +36,31 @@ class ParameterValue(models.Model):
     value = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.parameter
+        return str(self.parameter)
+
+
+class ParameterFilter(models.Model):
+    BOOLEAN = 1
+    RANGE = 2
+    CHECKBOX = 3
+    HIDDEN = 4
+
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    parameter = models.ForeignKey(Parameter, on_delete=models.CASCADE)
+    data_type = models.SmallIntegerField(choices=(
+        (BOOLEAN, 'Boolean'),
+        (RANGE, 'Range'),
+        (CHECKBOX, 'Checkbox'),
+        (HIDDEN, 'Hidden'),
+    ), default=HIDDEN)
+
+    def __init__(self, *args, **kwargs):
+        super(ParameterFilter, self).__init__(*args, **kwargs)
+        if 'category' not in kwargs and 'parameter' in kwargs:
+            self.category = kwargs['parameter'].category
+
+    def __str__(self):
+        return str(self.data_type)
 
 
 class CommunityProduct(models.Model):
@@ -51,7 +75,7 @@ class CommunityProduct(models.Model):
 class Offer(models.Model):
     title = models.CharField(max_length=255)
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    product = models.ForeignKey(CommunityProduct, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     description = models.TextField()
     short_description = models.CharField(max_length=255, null=True)
     price = models.SmallIntegerField()

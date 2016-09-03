@@ -3,7 +3,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .forms import LogginForm, QueryForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from main.models import Category, Offer, OfferImage, CommunityProduct, Product, Parameter, ParameterValue
+from main.models import Category, Offer, OfferImage, CommunityProduct, Product, Parameter, ParameterValue, \
+    ParameterFilter
 from django.views.generic import ListView
 import json
 import re
@@ -33,26 +34,41 @@ class CategoryView(ListView):
     context_object_name = 'offers'
     template_name = 'main/offers.html'
     paginate_by = 12
-    form = QueryForm()
 
     def get_queryset(self):
-        self.form = QueryForm(self.request.GET)
         category = self.kwargs['category_name']
+        self.form = QueryForm(self.request.GET, category=Category.objects.get(short_name=category))
         qs = []
-        products = CommunityProduct.objects.filter(category=Category.objects.filter(short_name=category))
-        if self.form.is_valid():
-            #qs = Offer.objects.filter(product=product, price__lt=self.form.cleaned_data['price']).order_by()
-            for product in products:
-                if Offer.objects.filter(product=product, price__lt=self.form.cleaned_data['price']):
-                    qs.append(Offer.objects.get(product=product, price__lt=self.form.cleaned_data['price']))
+        products = Product.objects.filter(category=Category.objects.get(short_name=category))
+        if self.form.is_valid():  # valid
+            offers = Offer.objects.filter(product__category__short_name=category)
+            for field in self.form.cleaned_data:
+                if self.form.cleaned_data[field]:
+                    filter = ParameterFilter.objects.get(id=field[7:])
+                    if filter.data_type == ParameterFilter.CHECKBOX:
+                        db_qs = Q()
+                        for p in self.form.cleaned_data[field]: # string parameter
+                            # name = ParameterValue.objects.filter(parameter=filter.parameter)[0].value
+                            db_qs.add(Q(['value__icontains', p]), 'OR')
+                        parameter = ParameterValue.objects.filter(db_qs, parameter=filter.parameter)
+                        offers = offers.filter(product_id__in=parameter.values('product_id'))
+                    elif filter.data_type == ParameterFilter.BOOLEAN:
+                        parameter = ParameterValue.objects.filter(parameter=filter.parameter, value='Yes')
+                        offers = offers.filter(product_id__in=parameter.values('product_id'))
+            for offer in offers:
+                qs.append(offer)
+
         else:
-            #qs = Offer.objects.filter(product=product).order_by()
             for product in products:
-                qs.append(Offer.objects.get(product=product))
+                try:
+                    qs.append(Offer.objects.get(product=product))
+                except Offer.DoesNotExist:
+                    pass
         return qs
 
     def get_context_data(self, **kwargs):
         context = super(CategoryView, self).get_context_data(**kwargs)
+        self.form = QueryForm(self.request.GET, category=Category.objects.get(short_name=self.kwargs['category_name']))
         context['form'] = self.form
         context['image_list'] = OfferImage.objects.all()
         context['categories'] = Category.objects.filter()
