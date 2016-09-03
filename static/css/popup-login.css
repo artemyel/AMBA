@@ -1,3 +1,12 @@
+.LogBody{
+    right: 10%;
+    top: 52px;
+    background: #E3EAFF;
+    z-index:99;
+    display: none ;
+    box-shadow:
+	 0px 0 15px 0px rgba(0, 0, 0, .09);
+}
 .b-container{
     width:200px;
     height:150px;

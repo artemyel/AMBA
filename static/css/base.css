@@ -1,88 +1,104 @@
-@font-face {
-    font-family: "Exo 2";
-    src: url(../fonts/Exo2-Regular.ttf);
+p { font-family: Raleway; }
+a { font-family: Raleway; }
+input { font-family: Raleway !important; }
+.padding0{
+    padding: 0px !important;
 }
-
-body * {
-    font-family: "Exo 2"
+.margin0{
+    margin: 0px !important;
 }
-
-body {
-    font-family: "Exo 2";
-    background-color: #E6E6E6 !important;
-
+.SideBar{
+    margin-top: 50px;
+    height: 94vh;
+    background-color: #E3EAFF;
+    padding: 0px !important;
 }
-
-.main-content {
-    position: relative;
+.down{
+	position:relative;
+    width: 90%;
+    margin: auto;
+	top: 70%;
 }
-
-.img-rounded {
-    width: 30px;
-    height: 30px;
-    margin-left: 5px;
+.search{
+    border-radius: 20px !important;
 }
-
-.header {
-    background: black;
-    color: white;
-    padding: 5px 5px 5px 5px;
-    font-size: 17px;
-    width: 100%;
+.center-txt{
+    text-align: center;
 }
-
-.header > .row {
-    margin: 0;
-    width: 100%;
-    padding: 0;
+.logo-group{
+    height: 30%;
+    width: 30%;
 }
-
-.search {
-    width: 100%;
-    max-width: 230px;
-    margin-top: 4px;
-    font-size: 80%;
-    background-image: url(../img/search-icon-white2.png);
-    background-repeat: no-repeat;
-    background-position: 4px 60%;
-    background-color: #555;
-    border: 0;
-    outline: none;
-    white-space: nowrap;
-    color: #cdcdcd;
-    padding-left: 20px;
+#logo-group-margin{
+    margin-right: 7%;
 }
-
-.user-signed a {
-    padding-left: 10px;
-
-}
-.user-unsigned a {
-}
-
-
-
-/*.user-unsigned,.user-signed > a, a:active, a:visited, a:hover {
+.link {
+    color: black !important;
     text-decoration: none !important;
-    color: #FFFFFF !important;
-}*/
-
-.form-signin > h2 {
-    margin-top: 0px;
 }
-.user-unsigned a, a:active, a:visited, a:hover {
+.link:visited {
+    color: black !important;
     text-decoration: none !important;
-    color: #FFFFFF !important;
 }
-.user-signed a, a:active, a:visited, a:hover {
+.link:hover {
+    color: white !important;
     text-decoration: none !important;
-    color: #FFFFFF !important;
 }
-.register_link{
-    margin-bottom: 15px;
+.link:active{
+    color: white !important;
+    text-decoration: none !important;
 }
-.register_link > a {
-    color: #23527c !important;
-    text-decoration: underline;
+.content{
+    margin-top: 50px;
 }
-
+.NavbarMy{
+    background-color: #8EA8FF;
+}
+.Sign{
+    box-shadow:
+	 0px 0 5px 0px rgba(0, 0, 0, .09);
+    margin-top: 8px;
+    border-radius: 20px !important;
+    width: 9%;
+}
+#SignIn{
+    margin-right: 1%;
+    background-color: #9BFF8E;
+}
+#SignUp{
+    background-color: #E3EAFF;
+}
+.btnDropdown{
+    background: none !important;
+    display: inline-block;
+    color: #FFFFFF;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background: none !important;
+    color: #FFFFFF ;
+}
+.shadow{
+    min-height: 100vh;
+	box-shadow:
+	 0px 0 21px 0px rgba(0, 0, 0, .09),
+	 0px 0 21px 0px rgba(0, 0, 0, .09);
+}
+.strelka{
+    width: 15%;
+}
+.user{
+    color: white !important;
+    margin-top:15px;
+}
+.user:visited {
+    color: white !important;
+    text-decoration: none !important;
+}
+.user:hover {
+    color: black !important;
+    text-decoration: none !important;
+}
+.user:active {
+    color: black !important;
+    text-decoration: none !important;
+}
