@@ -12,6 +12,7 @@ import re
 
 # TODO пофиксить/добавить else к if
 def index(request):
+    offers = Offer.objects.filter().order_by('-product__rating')[:32]
     if request.method == 'POST':
         form = LogginForm(request.POST)
         if form.is_valid():
@@ -19,14 +20,24 @@ def index(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return render(request, 'main/index.html', {'user': user, 'categories': Category.objects.filter()})
+                    # return render(request, 'main/index.html', {'user': user, 'categories': Category.objects.filter()})
     # TODO отделить log_in view от main view
     else:
         if request.user.is_authenticated:
-            return render(request, 'main/index.html', {'user': request.user, 'categories': Category.objects.filter()})
+            pass
+            # return render(request, 'main/index.html', {'user': request.user, 'categories': Category.objects.filter()})
         else:
             form = LogginForm()
-            return render(request, 'main/index.html', {'user_form': form, 'categories': Category.objects.filter()})
+            return render(request, 'main/index.html', {
+                'user_form': form,
+                'categories': Category.objects.filter(),
+                'offers': offers
+            })
+    return render(request, 'main/index.html', {
+        'user': request.user,
+        'categories': Category.objects.filter(),
+        'offers': offers
+    })
 
 
 class CategoryView(ListView):
@@ -47,7 +58,7 @@ class CategoryView(ListView):
                     filter = ParameterFilter.objects.get(id=field[7:])
                     if filter.data_type == ParameterFilter.CHECKBOX:
                         db_qs = Q()
-                        for p in self.form.cleaned_data[field]: # string parameter
+                        for p in self.form.cleaned_data[field]:  # string parameter
                             # name = ParameterValue.objects.filter(parameter=filter.parameter)[0].value
                             db_qs.add(Q(['value__icontains', p]), 'OR')
                         parameter = ParameterValue.objects.filter(db_qs, parameter=filter.parameter)
@@ -96,7 +107,7 @@ def test_ajax(request):
     if request.is_ajax():
         query = re.sub(r'\s+', ' ', request.GET['q'])
         data = []
-        #items = Product.objects.filter(name__icontains=request.GET['q'])
+        # items = Product.objects.filter(name__icontains=request.GET['q'])
         lq = query.split(' ')
         qs = Q()
         for i in lq:
