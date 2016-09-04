@@ -65,72 +65,86 @@
 
 {% block content %}
     <div class="container-fluid">
-        <div class="row main-content">
-            <div class="col-sm-2">
-                <div class="field categories">
-                    <ul>
-                        {% for category in categories %}
-                            <li>
-                                <a href="{{ category.short_name }}/?page=1">{{ category.name }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
+        <div class="row marginContent">
+            <div class="col-xs-offset-5 col-xs-2">
+                <p class="top">Top E-liquids</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="topEliquids">
+                    фотка+инфа
                 </div>
-                <div class="field locate"><a href="/accounts/add_offer">Разместить объявление</a></div>
             </div>
-            <div class="col-sm-8">
-                <section class="fade-slick slider">
-                    <div>
-                        <img src="http://placehold.it/250x200?text=1">
-                    </div>
-                    <div>
-                        <img src="http://placehold.it/450x300?text=2">
-                    </div>
-                    <div>
-                        <img src="http://placehold.it/450x300?text=3">
-                    </div>
-                    <div>
-                        <img src="http://placehold.it/450x300?text=4">
-                    </div>
-                    <div>
-                        <img src="http://placehold.it/450x300?text=5">
-                    </div>
-                    <div>
-                        <img src="http://placehold.it/450x300?text=6">
-                    </div>
-                </section>
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="topEliquids">
+                    фотка+инфа
+                </div>
             </div>
-            <div class="col-sm-2">
-                <div class="field support">
-                    FAQ<br>Support<br>About<br>Twitter
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="topEliquids">
+                    фотка+инфа
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="topEliquids">
+                    фотка+инфа
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="topEliquids">
+                    фотка+инфа
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row marginContent">
+            <div class="col-xs-offset-5 col-xs-2">
+                <p class="top">Top Products</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="topEliquids">
+                    фотка+инфа
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="topEliquids">
+                    фотка+инфа
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="topEliquids">
+                    фотка+инфа
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="topEliquids">
+                    фотка+инфа
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="topEliquids">
+                    фотка+инфа
                 </div>
             </div>
         </div>
     </div>
-    <p id="pop" align="center">Popular</p>
-    <section class="regular slider">
-        <div>
-            <img src="http://placehold.it/350x300?text=1">
-        </div>
-        <div>
-            <img src="http://placehold.it/350x300?text=2">
-        </div>
-        <div>
-            <img src="http://placehold.it/350x300?text=3">
-        </div>
-        <div>
-            <img src="http://placehold.it/350x300?text=4">
-        </div>
-        <div>
-            <img src="http://placehold.it/350x300?text=5">
-        </div>
-        <div>
-            <img src="http://placehold.it/350x300?text=6">
-        </div>
-    </section>
 
 
-    <select class="js-data-example-ajax" style="width:100%">
-        <option value="3620194" selected="selected">Select a value......</option>
-    </select>
+{% endblock %}
+
+{% block SideBar %}
+     <div class="">
+         <ul class="list-unstyled category">
+             {% for category in categories %}
+                 <li class="sideCategory">
+                     <a class="categoryColor" href="{{ category.short_name }}/?page=1">{{ category.name }}</a>
+                 </li>
+             {% endfor %}
+         </ul>
+     </div>
+
 {% endblock %}
