@@ -1,7 +1,6 @@
-p { font-family: Raleway !important; }
-a { font-family: Raleway !important; }
-input { font-family: Raleway !important; }
-
+body{
+    font-family: 'Raleway', sans-serif;
+}
 .padding0{
     padding: 0px !important;
 }
@@ -9,7 +8,7 @@ input { font-family: Raleway !important; }
     margin: 0px !important;
 }
 .SideBar{
-    margin-top: 50px;
+    margin-top: 40px;
     height: 94vh;
     background-color: #E3EAFF;
     padding: 0px !important;
@@ -51,7 +50,7 @@ input { font-family: Raleway !important; }
 }
 .content{
 
-    margin-top: 50px;
+    margin-top: 40px;
 }
 .NavbarMy{
     background-color: #8EA8FF;
@@ -75,6 +74,7 @@ input { font-family: Raleway !important; }
     text-decoration: none !important;
     display: inline-block;
     color: white;
+     margin-top:8px;
 }
 .btnDropdown:visited {
     color: white !important;
@@ -95,11 +95,11 @@ input { font-family: Raleway !important; }
 	 0px 0 21px 0px rgba(0, 0, 0, .09);
 }
 .strelka{
-    width: 15%;
+    width: 13px;
 }
 .user{
     color: white !important;
-    margin-top:15px;
+    margin-top:5px;
 }
 .user:visited {
     color: white !important;
@@ -114,13 +114,18 @@ input { font-family: Raleway !important; }
     text-decoration: none !important;
 }
 .myDropdown{
-display: inline-block;
+    display: inline-block;
 }
-.myPills{
-    background: #E3EAFF;
-    margin-top: 50px;
-    height: 94vh;
+
+div.shadow>.col-md-10{
+    padding-left: 4%;
 }
-.cities{
-    margin-top: 13px;
+.navbar{
+    min-height:40px !important;
+}
+
+.avatar{
+    width: 30px;
+    height: 30px;
+    border-radius:10px;
 }
