@@ -1,5 +1,5 @@
-p { font-family: Raleway; }
-a { font-family: Raleway; }
+p { font-family: Raleway !important; }
+a { font-family: Raleway !important; }
 input { font-family: Raleway !important; }
 .padding0{
     padding: 0px !important;
@@ -49,6 +49,7 @@ input { font-family: Raleway !important; }
     text-decoration: none !important;
 }
 .content{
+
     margin-top: 50px;
 }
 .NavbarMy{
@@ -56,10 +57,10 @@ input { font-family: Raleway !important; }
 }
 .Sign{
     box-shadow:
-	 0px 0 5px 0px rgba(0, 0, 0, .09);
+    0px 0 5px 0px rgba(0, 0, 0, .09);
     margin-top: 8px;
     border-radius: 20px !important;
-    width: 9%;
+    min-width: 70px;
 }
 #SignIn{
     margin-right: 1%;
@@ -70,12 +71,21 @@ input { font-family: Raleway !important; }
 }
 .btnDropdown{
     background: none !important;
+    text-decoration: none !important;
     display: inline-block;
-    color: #FFFFFF;
+    color: white;
 }
-.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background: none !important;
-    color: #FFFFFF ;
+.btnDropdown:visited {
+    color: white !important;
+    text-decoration: none !important;
+}
+.btnDropdown:hover {
+    color: black !important;
+    text-decoration: none !important;
+}
+.btnDropdown:active{
+    color: black !important;
+    text-decoration: none !important;
 }
 .shadow{
     min-height: 100vh;
@@ -101,4 +111,15 @@ input { font-family: Raleway !important; }
 .user:active {
     color: black !important;
     text-decoration: none !important;
+}
+.myDropdown{
+display: inline-block;
+}
+.myPills{
+    background: #E3EAFF;
+    margin-top: 50px;
+    height: 94vh;
+}
+.cities{
+    margin-top: 13px;
 }

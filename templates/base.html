@@ -25,7 +25,7 @@
             {% if user.is_authenticated %}
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle btnDropdown" data-toggle="dropdown">Санкт-Петербург<img src="../static/img/caret.png" class="strelka"></a>
+                      <a href="#" class="dropdown-toggle btnDropdown cities" data-toggle="dropdown">Санкт-Петербург<img src="/static/img/caret.png" class="strelka"></a>
                       <ul class="dropdown-menu">
                         <li><a href="#">1</a></li>
                              <li><a href="#">2</a></li>
@@ -49,18 +49,16 @@
                               <input id="submit_btn" type="submit" value="Вход"/>
                           </form>{% endcomment %}
 
-                  <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle btnDropdown" data-toggle="dropdown">Санкт-Петербург<!--<img src="../static/img/caret.png" class="strelka"> --></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                 <a href="/accounts/register/"  class="pull-right Sign btn link" id="SignUp">Sign Up</a></li>
-                 <a href="javascript:void(0)"  class="pull-right Sign btn link log" id="SignIn">Sign In</a></li>
+                  <div class="dropdown myDropdown margin0">
+                    <a href="#" class="dropdown-toggle btnDropdown cities" data-toggle="dropdown">Санкт-Петербург<img src="/static/img/caret.png" class="strelka"></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                    </div>
+                    <a href="/accounts/register/" class="pull-right Sign btn link" id="SignUp">Sign up</a>
+                    <a href="javascript:void(0)" class="pull-right Sign btn link log" id="SignIn">Sign in</a>
                 {%endif%}
 
                 {% comment %}<div class="b-container" onclick="PopUpShow()">
@@ -98,7 +96,7 @@
 
     <div class="container ">
         <div class="row shadow">
-          <div class="col-xs-2 padding0">
+          <div class="col-md-2 col-sm-3 col-xs-4 test padding0">
             <div class=" SideBar affix">
                 {% block SideBar %}
                 {% endblock %}
@@ -110,8 +108,8 @@
                     </form>
                     <p class="center-txt">Follow us!</p>
                     <p class="center-txt">
-                        <a href="#"><img src="../static/img/Twitter-Logo.png" class="logo-group" id="logo-group-margin"></a>
-                        <a href="#"><img src="../static/img/VK.com-logo.png" class="logo-group"></a>
+                        <a href="#"><img src="/static/img/Twitter-Logo.png" class="logo-group" id="logo-group-margin"></a>
+                        <a href="#"><img src="/static/img/VK.com-logo.png" class="logo-group"></a>
                     </p>
                     <p class="center-txt">
                         <a href="#" class="link">About</a>
@@ -121,11 +119,20 @@
                 </div>
             </div>
            </div>
-            <div class=" col-xs-10 content ">
+            <div class=" col-md-10 col-sm-9 col-xs-8 content ">
                     {% block content %}
                     {% endblock %}
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
   </body>
 </html>
