@@ -1,6 +1,6 @@
 .LogBody{
     right: 10%;
-    top: 52px;
+    top: 40px;
     background: #E3EAFF;
     z-index:99;
     display: none ;
@@ -67,4 +67,9 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.btn-lg{
+    background-color: #8EA8FF !important;
+    border:none !important;
 }

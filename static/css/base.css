@@ -1,3 +1,6 @@
+a :active{
+    text-decoration: none !important;
+}
 body{
     font-family: 'Raleway', sans-serif;
 }
@@ -58,7 +61,7 @@ body{
 .Sign{
     box-shadow:
     0px 0 5px 0px rgba(0, 0, 0, .09);
-    margin-top: 8px;
+    margin-top: 2.5px;
     border-radius: 20px !important;
     min-width: 70px;
 }
@@ -100,6 +103,7 @@ body{
 .user{
     color: white !important;
     margin-top:5px;
+    height:30px;
 }
 .user:visited {
     color: white !important;
@@ -123,9 +127,25 @@ div.shadow>.col-md-10{
 .navbar{
     min-height:40px !important;
 }
-
-.avatar{
-    width: 30px;
+.avaBlock{
+    overflow:hidden;
     height: 30px;
-    border-radius:10px;
+    width:30px;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+.avaName{
+    vertical-align:11px;
+    display:inline-block;
+}
+
+.userwindow{
+    border: 1px solid red;
+    display: none;
+    width:500px;
+    height:500px;
+    top:40px;
+    right:5%;
+    background: #E3EAFF;
 }
