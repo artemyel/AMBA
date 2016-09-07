@@ -70,23 +70,23 @@
 
 
         <div class="row marginContent">
-            <div class="col-xs-offset-5 col-xs-2">
+            <div class="col-xs-offset-3 col-sm-offset-4 col-xs-5">
                 <p class="top">Top Products</p>
             </div>
         </div>
         <div class="row">
             {% for offer in offers %}
                 <div class="col-xs-6 col-sm-4 col-md-3">
-                <div class="topProducts">
-                    {{ offer.title }}
-                    <img class="mainImg" src="/media/{{ offer.pk | get_main_image_by_offer }}">
-                    {{ offer.short_description }}
+                    <a href="/main/offer/{{ offer.pk }}/">
+                    <div class="topProducts">
+                        <div class="imgZoom">
+                            <img class="mainImg" src="/media/{{ offer.pk | get_main_image_by_offer }}" onload="javascript:autosize(this,250,250)">
+                        </div>
+                        <p class="description">{{ offer.title }}<br>{{ offer.short_description }}</p>
+                    </div>
+                       </a>
                 </div>
-            </div>
             {% endfor %}
-
-
-
         </div>
     </div>
 
@@ -104,4 +104,4 @@
          </ul>
      </div>
 
-{% endblock %}
+{% endblock %}ч

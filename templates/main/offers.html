@@ -10,22 +10,7 @@
 
 
 {% block content %}
-    <div class="row" id="swap">
-        <div class="col-xs-6" align="right">Модели</div>
-        <div class="col-xs-6" align="left">Лоты</div>
-    </div>
-    <div class="row" id="main-content">
-        <div class="col-xs-3">
-            <p class="linkStyle line"><a class="linkStyle" href="/main/">AMBA > </a></p>
-            <p class="line">{{ category }}</p>
-            <div class="selection field categories">
-                {% for category in categories %}
-                    <li class="list-unstyled linkStyle">
-                        <a class="linkStyle" href="/main/{{ category.short_name }}/?page=1">{{ category.name }}</a>
-                    </li>
-                {% endfor %}
 
-            </div>
             <form>
                 {{ form }}
                 <input type="submit">
@@ -39,8 +24,7 @@
                     }
                 </script>
             </form>
-        </div>
-        <div class="col-xs-9">
+        <div class="col-xs-12">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="pagination">
@@ -76,8 +60,5 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
-    <div class="row bottom">
-        <p>твитер ок вк</p>
-    </div>
+
 {% endblock %}

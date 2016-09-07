@@ -4,8 +4,8 @@
     background: #E3EAFF;
     z-index:99;
     display: none ;
-    box-shadow:
-	 0px 0 15px 0px rgba(0, 0, 0, .09);
+    box-shadow:  0px 0px 19px -1px rgba(122,122,122,.2);
+    border-radius: 0px 0px 10px 10px;
 }
 .b-container{
     width:200px;

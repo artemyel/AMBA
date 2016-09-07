@@ -32,3 +32,10 @@ function autosize (img,max_width,max_height)
   img.width = (max_height*width)/height;
  }
 }
+
+
+$(document).ready(function(){
+
+        var h = $(document).height();
+        $(".SideBar").height(h);
+});

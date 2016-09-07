@@ -11,16 +11,16 @@ body{
     margin: 0px !important;
 }
 .SideBar{
+    margin-bottom:0px !important;
     margin-top: 40px;
-    height: 94vh;
+    min-height: 94vh;
     background-color: #E3EAFF;
     padding: 0px !important;
 }
 .down{
-	position:relative;
+	position: relative !important;
     width: 90%;
     margin: auto;
-	top: 70%;
 }
 .search{
     border-radius: 20px !important;
@@ -52,7 +52,7 @@ body{
     text-decoration: none !important;
 }
 .content{
-
+    margin-bottom: 20px;
     margin-top: 40px;
 }
 .NavbarMy{
@@ -141,11 +141,28 @@ div.shadow>.col-md-10{
 }
 
 .userwindow{
-    border: 1px solid red;
+    padding: 10px 20px 10px 20px;
     display: none;
-    width:500px;
-    height:500px;
     top:40px;
-    right:5%;
+    right:4.5%;
     background: #E3EAFF;
+    box-shadow:  0px 0px 19px -1px rgba(122,122,122,.2);
+    border-radius: 0px 0px 6px 6px;
+}
+
+.btn-self{
+    background-color: #9BFF8E;
+    color: black;
+}
+.btn-self:hover{
+    color: white !important;
+}
+
+.btn-logout{
+    margin-top: 8px;
+    color: black;
+    background-color: #8EA8FF;
+}
+.btn-logout:hover{
+    color: white !important;
 }
