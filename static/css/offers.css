@@ -1,8 +1,20 @@
+a:hover{
+    text-decoration: none;
+}
 .linkStyle{
     overflow:hidden;
     background-color: rgba(227,234,255,.3);
-    margin-top:11%;
+    margin-top:2%;
     width:160px;
     height:215px;
     box-shadow:  0px 0px 19px -1px rgba(122,122,122,.4);
+}
+.formFilter{
+    padding-top: 10%;
+    margin-bottom:5%;
+    margin-left: 10%;
+}
+
+.marginOffer{
+    margin-top: 3%;
 }

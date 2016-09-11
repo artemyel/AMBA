@@ -6,31 +6,18 @@
 {% block references %}
     {{ block.super }}
     <link rel="stylesheet" type="text/css" href="{% static "css/offers.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}">
 {% endblock %}
 
 
 {% block content %}
-
-            <form>
-                {{ form }}
-                <input type="submit">
-                 <input type='button' value='Reset' name='reset' onclick="return clearForm(this.form);">
-
-                <script>
-                    function clearForm(form) {
-                        var $f = $(form);
-                        var $f = $f.find(':input').not(':button, :submit, :reset, :hidden');
-                        $f.val('').attr('value', '').removeAttr('checked').removeAttr('selected');
-                    }
-                </script>
-            </form>
-        <div class="col-xs-12">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="pagination">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pagination">
                 <span class="page-links">
                     {% if page_obj.has_previous %}
-                        <a class="linkStyle" href="{% querystring page=page_obj.previous_page_number %}">
+                        <a class="" href="{% querystring page=page_obj.previous_page_number %}">
                             <span>&lt;Previous</span>
                         </a>
                     {% endif %}
@@ -38,27 +25,45 @@
                         Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                     </span>
                     {% if page_obj.has_next %}
-                        <a class="linkStyle" href="{% querystring page=page_obj.next_page_number %}">
+                        <a class="" href="{% querystring page=page_obj.next_page_number %}">
                             <span>Next></span>
                         </a>
                     {% endif %}
                 </span>
-                    </div>
                 </div>
             </div>
-            <div class="row">
-                {% for offer in object_list %}
-                    <a href="/main/offer/{{ offer.pk }}/">
-                        <div class="col-xs-6 col-sm-4 col-md-3 linkStyle">
-                            <div class="field">
-                                {{ offer.product }}
-                                <img class="mainImg" src="/media/{{ offer.pk | get_main_image_by_offer }}">
-                                <div class="btn btn-default">Перейти к объявлению</div>
-                            </div>
-                        </div>
-                    </a>
-                {% endfor %}
-            </div>
         </div>
+        <div class="row">
+            {% for offer in object_list %}
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <a href="/main/offer/{{ offer.pk }}/">
+                    <div class="topProducts">
+                        <div class="imgZoom">
+                            <img class="mainImg" src="/media/{{ offer.pk | get_main_image_by_offer }}" onload="javascript:autosize(this,250,250)">
+                        </div>
+                        <p class="description">{{ offer.title }}<br>{{ offer.short_description }}</p>
+                    </div>
+                       </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
+{% endblock %}
+
+{% block SideBar %}
+
+    <form class="formFilter list-unstyled">
+        {{ form }}
+        <input type="submit">
+        <input type='button' value='Reset' name='reset' onclick="return clearForm(this.form);">
+
+        <script>
+            function clearForm(form) {
+                var $f = $(form);
+                var $f = $f.find(':input').not(':button, :submit, :reset, :hidden');
+                $f.val('').attr('value', '').removeAttr('checked').removeAttr('selected');
+            }
+        </script>
+    </form>
 {% endblock %}
